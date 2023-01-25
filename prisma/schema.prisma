@@ -7,11 +7,39 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model games {
+model Games {
   id       Int     @id @default(autoincrement())
   name     String?
   platform String?
   genre    String?
   status   Boolean? @default(dbgenerated("false"))
   grade    Int?    @default(0)
+  evaluator_id Int? @unique 
+  user  Users? @relation(fields: [evaluator_id],references: [id]) 
+
+  @@map("games")
+}
+
+model  Users {
+
+  id Int  @id @default(autoincrement())
+  name  String?
+  email String? @unique
+  password String?
+  cpf String?
+
+  Games Games[]
+  Session Sessions[]
+
+
+  @@map("users")
+}
+
+model Sessions{
+    id Int  @id @default(autoincrement())
+    user_id Int @unique
+    user  Users  @relation(fields: [user_id],references: [id])
+    token String 
+
+    @@map("sessions")
 }

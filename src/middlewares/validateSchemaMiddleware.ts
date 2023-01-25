@@ -1,10 +1,10 @@
 import { NextFunction, Request,Response } from "express";
 import Joi, { ValidationResult } from "joi";
-import {  Game, GamePartial } from "../protocols/Game.js";
+import { AllPartial } from "../protocols/All.js";
 
 export  const validateSchema = (schema : Joi.ObjectSchema) => {
 	return (req:Request, res:Response, next:NextFunction) => {
-        const body : GamePartial= req.body
+        const body : AllPartial= req.body
 		const val: ValidationResult = schema.validate(body , { abortEarly: false });
         const {error} = val
 		if (error) {

@@ -1,10 +1,10 @@
 import express from 'express';
-import  gamesRouter  from "./routes/gamesRouter.js";
+import serverRouter from './routes/serverRouter.js';
 
 const app = express();
 
 app.use(express.json());
-app.use(gamesRouter);
+app.use(serverRouter);
 
 
 const port : string | number  = process.env.PORT || 4000;

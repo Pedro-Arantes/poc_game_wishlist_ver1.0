@@ -2,6 +2,17 @@ import prisma from "../src/database/db.js";
 
 async function main(){
 
+    await prisma.users.createMany({
+        data: [
+            {
+                name: "Test",
+                email: "test@gmail.com",
+                password: "teste",
+                cpf: "11111111111"
+            }
+        ]
+    })
+
     await prisma.games.createMany({
         data: [
             {
@@ -14,7 +25,8 @@ async function main(){
                 platform: "Pc",
                 genre: "RPG",
                 grade: 10,
-                status: true
+                status: true,
+                evaluator_id: 1
             },
             {
                 name: "League of Legends",
