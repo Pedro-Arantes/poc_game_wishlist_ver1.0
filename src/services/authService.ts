@@ -9,5 +9,4 @@ export async function haveToken(token:string){
             throw "Token_Not_Valid";   
         }
         return result 
-    
 }

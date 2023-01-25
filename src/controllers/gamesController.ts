@@ -65,11 +65,8 @@ export async function putGame(req:Request,res:Response){
         res.sendStatus(200)
     } catch (error) {
         console.log(error)
-        if (error  === "Token_Not_Valid") {
-            res.sendStatus(401)
-        }else{
-            res.sendStatus(500)
-        }
+        res.sendStatus(500)
+        
         
     }
 }

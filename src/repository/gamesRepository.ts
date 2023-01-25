@@ -15,7 +15,6 @@ export async function selectFilterGames(platform: string): Promise<GameEntity[]>
             },
         },
     })
-    // connection.query(`SELECT * FROM games  WHERE platform ILIKE  $1`, [platform + '%']);
 }
 
 export async function upsertGames(game:GamePartial, id?: number,user_id?:number): Promise<GameEntity>{
