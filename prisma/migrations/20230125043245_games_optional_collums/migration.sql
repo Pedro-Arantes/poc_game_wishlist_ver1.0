@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "games" ALTER COLUMN "name" DROP NOT NULL,
+ALTER COLUMN "platform" DROP NOT NULL,
+ALTER COLUMN "genre" DROP NOT NULL,
+ALTER COLUMN "status" SET DEFAULT false;

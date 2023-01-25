@@ -1,11 +1,12 @@
-import { GameInsert } from "../protocols/Game.js";
+import { Game} from "../protocols/Game.js";
 import {   selectVeryGames} from "../repository/gamesRepository.js";
 
-export async function haveGame(game:GameInsert){
+export async function haveGame(game:Game){
 
     try {
         const result = await selectVeryGames(game.name)
-        if (result.rowCount > 0 ) {
+        if (result.length > 0 ) {
+            throw Error("game_already_inserted")
              return true
         }else{
             return false 
