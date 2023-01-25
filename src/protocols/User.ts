@@ -9,3 +9,5 @@ export type UserEntity = {
 export type UserPartial = Partial<UserEntity> | Omit<UserEntity,'id'>
 
 export type User = Omit<UserEntity,'id'>
+
+export type UserLogin = Omit<UserEntity,'id'|'name'|'cpf'>

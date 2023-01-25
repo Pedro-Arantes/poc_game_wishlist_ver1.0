@@ -18,7 +18,7 @@ export async function selectFilterGames(platform: string): Promise<GameEntity[]>
     // connection.query(`SELECT * FROM games  WHERE platform ILIKE  $1`, [platform + '%']);
 }
 
-export async function upsertGames(game:GamePartial, id?: number): Promise<GameEntity>{
+export async function upsertGames(game:GamePartial, id?: number,user_id?:number): Promise<GameEntity>{
     const { name, platform, genre,status,grade } = game
     //prisma.games.upsert()
     return prisma.games.upsert({
@@ -29,9 +29,9 @@ export async function upsertGames(game:GamePartial, id?: number): Promise<GameEn
         update: {
             grade:game.grade,
             status:game.status,
+            evaluator_id: user_id
         },
     })
-    //connection.query('INSERT INTO games(name,platform,genre)  VALUES($1,$2,$3)', [name, platform, genre]);
 }
 export async function updateGame(game: GamePut, id: number): Promise<void> {
     const { status, grade } = game

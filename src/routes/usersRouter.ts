@@ -1,11 +1,12 @@
 import { Router } from "express";
-import { validateSchema } from "../middlewares/validateSchemaMiddleware";
-import { userSchema } from "../models/insertUserModel";
+import { getUsers, postUser } from "../controllers/usersController.js";
+import { validateSchema } from "../middlewares/validateSchemaMiddleware.js";
+import { userSchema } from "../models/insertUserModel.js";
 
 
 const usersRouter : Router = Router();
 
-usersRouter.post("/games",validateSchema(userSchema),/*postUser*/)
-usersRouter.get("/games",/*getUsers*/)
+usersRouter.post("/registration",validateSchema(userSchema),postUser)
+usersRouter.get("/user",getUsers)
 
 export default usersRouter;

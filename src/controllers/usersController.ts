@@ -1,7 +1,7 @@
 import { Request,Response } from "express";
 import { User } from "../protocols/User";
-import { insertUser, selectUsers } from "../repository/usersRepository";
-import { haveUser } from "../services/userService";
+import { insertUser, selectUsers } from "../repository/usersRepository.js";
+import { haveUser } from "../services/userService.js";
 
 export async function getUsers(req:Request,res:Response){
 

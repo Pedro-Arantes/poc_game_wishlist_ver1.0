@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { delGame, getGames, getPlatformGames, postGames, putGame } from "../controllers/gamesController.js";
+import { hasToken } from "../middlewares/authMiddleware.js";
 import { validateSchema } from "../middlewares/validateSchemaMiddleware.js";
 import { gameSchema } from "../models/insertGameModel.js";
 

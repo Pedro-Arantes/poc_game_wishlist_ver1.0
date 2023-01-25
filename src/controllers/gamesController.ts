@@ -1,6 +1,7 @@
 import { Request,Response } from "express";
-import { Game, GameInsert, GamePut } from "../protocols/Game.js";
+import { Game, GamePut } from "../protocols/Game.js";
 import { deleteGame, upsertGames, selectFilterGames, selectGames, updateGame } from "../repository/gamesRepository.js";
+import { haveToken } from "../services/authService.js";
 import { haveGame } from "../services/gamesService.js";
 
 export async function getGames(req:Request,res:Response){
@@ -54,15 +55,22 @@ export async function postGames(req:Request,res:Response){
 export async function putGame(req:Request,res:Response){
 
     const game : GamePut = req.body
-    const {game_id }  = req.headers 
+    const {game_id,authorization }  = req.headers 
+    const token = authorization?.replace('Bearer ', '');
     const id : number = Number(game_id)
     try {
-
-        const result = await upsertGames(game,id)
+        const sessionResult = await haveToken(token)
+        const user_id = sessionResult.user_id
+        const result = await upsertGames(game,id,user_id)
         res.sendStatus(200)
     } catch (error) {
         console.log(error)
-        res.sendStatus(500)
+        if (error  === "Token_Not_Valid") {
+            res.sendStatus(401)
+        }else{
+            res.sendStatus(500)
+        }
+        
     }
 }
 

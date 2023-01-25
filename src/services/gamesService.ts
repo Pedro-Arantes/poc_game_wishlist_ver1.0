@@ -6,7 +6,7 @@ export async function haveGame(game:Game){
     try {
         const result = await selectVeryGames(game.name)
         if (result.length > 0 ) {
-            throw Error("game_already_inserted")
+            throw "game_already_inserted"
              return true
         }else{
             return false 
