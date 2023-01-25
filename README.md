@@ -83,8 +83,8 @@ O projeto foi pensado para treinar TypeScript como uma POC.
         body:
     ```bash
     {
-        "name": "joao",
-        "price": 300
+        "grade": 8,
+        "status": true
     }
     ```
         headers:
