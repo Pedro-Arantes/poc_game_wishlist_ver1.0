@@ -22,6 +22,9 @@ export async function postSession(req:Request,res:Response){
     const token: string = uuid();
     try {
         const userEntity = await selectLoginUser(user)
+        if (!userEntity) {
+            return res.sendStatus(401)
+        }
         const session :Session = {
             user_id: userEntity.id,
             token: token

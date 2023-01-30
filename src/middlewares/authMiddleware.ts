@@ -13,7 +13,7 @@ export async  function hasToken  (req:Request, res:Response, next:NextFunction) 
        } catch (error) {
         //console.log(error)
         if (error  === "Token_Not_Valid") {
-            res.sendStatus(401)
+            return res.sendStatus(401)
         }else{
             res.sendStatus(500)
         }

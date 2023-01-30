@@ -10,6 +10,6 @@ gamesRouter.post("/games",validateSchema(gameSchema),postGames)
 gamesRouter.get("/games",getGames)
 gamesRouter.get("/games/:platform",getPlatformGames)
 gamesRouter.put("/games",hasToken,putGame)
-gamesRouter.delete("/games/:game_id",delGame)
+gamesRouter.delete("/games/:game_id",hasToken,delGame)
 
 export default gamesRouter;

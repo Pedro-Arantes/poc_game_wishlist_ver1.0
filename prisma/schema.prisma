@@ -13,8 +13,8 @@ model Games {
   platform String?
   genre    String?
   status   Boolean? @default(dbgenerated("false"))
-  grade    Int?    @default(0)
-  evaluator_id Int? @unique 
+  grade    Decimal?  @default(0)
+  evaluator_id Int?  
   user  Users? @relation(fields: [evaluator_id],references: [id]) 
 
   @@map("games")
@@ -29,7 +29,7 @@ model  Users {
   cpf String?
 
   Games Games[]
-  Session Sessions[]
+  Session Sessions?
 
 
   @@map("users")
@@ -39,7 +39,7 @@ model Sessions{
     id Int  @id @default(autoincrement())
     user_id Int @unique
     user  Users  @relation(fields: [user_id],references: [id])
-    token String 
+    token String  
 
     @@map("sessions")
 }
