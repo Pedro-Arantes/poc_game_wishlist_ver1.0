@@ -77,7 +77,7 @@ O projeto foi pensado para treinar TypeScript  e Prisma como uma POC.
             "platform": "Console",
             "genre": "Luta",
             "status": "true",
-            "grade": 8
+            "grade": "8"
         }
     ]
     ```
